@@ -1,0 +1,6 @@
+:root {
+    --gradient: linear-gradient(163deg, #3182ce 0%, #63b3ed 100%);
+    --gradient-dark: linear-gradient(31deg, #313860 0%, #151928 100%);; 
+    
+    overflow: hidden
+}
