@@ -4,3 +4,15 @@
     
     overflow: hidden
 }
+
+.Login-Container {
+    width: 100%;
+    height: 100vh;
+
+    background-color: #EFF9EE;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
