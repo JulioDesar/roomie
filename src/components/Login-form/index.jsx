@@ -7,7 +7,7 @@ export function LoginForm() {
         <header>
             <img width={400} src="./logo.svg" alt="Roomie" />
 
-            <form action="">
+            <form>
                 <span>Login</span>
                 <Input type="email" size="75" />
 
