@@ -10,9 +10,15 @@ header span{
     color: #A59E9E;
 }
 
+section{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
 #forgot-password {
     display: flex;
-    align-self: flex-end;
+    align-items: center;
 
     color: #A59E9E; 
     
