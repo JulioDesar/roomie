@@ -4,24 +4,32 @@ header {
     align-items: center;
 }
 
-header span{
+header span {
     display: flex;
     align-self: flex-start;
     color: #A59E9E;
 }
 
-section{
+header div {
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-end;
 }
 
-#forgot-password {
-    display: flex;
-    align-items: center;
+a {
+    font-size: .8em;
+    color: #A59E9E;
+    text-decoration: none;
+}
 
-    color: #A59E9E; 
-    
+section {
+    display: flex;
+    flex-direction: row;
+}
+
+section>img {
+    width: 100%;
+    color: #286955;
+    padding: .1em;
 }
 
 .Login-button {
@@ -35,7 +43,7 @@ section{
 
     color: white;
     font-size: 1rem;
-    line-height: 150%; 
+    line-height: 150%;
     letter-spacing: 0.075em;
 
     border: none;
@@ -49,17 +57,17 @@ section{
 
 .Login-button::before {
     content: "";
-    
+
     height: 100%;
     width: 100%;
-    
+
     position: absolute;
     top: 0;
     left: 0;
 
     border-radius: 50px;
     background: var(--gradient-dark);
-    
+
     z-index: -1;
     opacity: 0;
     transition: .5s ease;

@@ -9,17 +9,17 @@ export function LoginForm() {
 
             <form>
                 <span>Login</span>
-                <Input type="email" size="75" />
+                <Input type="email" size="70" />
 
                 <span>Senha</span>
-                <Input type="password" size="75" />
-                <a href="*" id="forgot-password">Esqueci minha senha</a>
+                <Input type="password" size="70" />
+                <div><a href="*">Esqueci minha senha</a></div>
                 <button type="submit" value="Submit" className="Login-button">Entrar</button>
             </form>
 
             <section>
-                <img src="./google_svg.svg" alt="" />
-                <img src="./instagram_svg.svg" alt="" />
+                <img src="./google_svg.svg" alt="Google" />
+                <img src="./instagram_svg.svg" alt="Instagram" />
             </section>
         </header>
     );
