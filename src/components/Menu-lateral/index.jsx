@@ -1,20 +1,38 @@
 import React from "react";
 import "./style.css";
+import { BiLogOut } from "react-icons/bi";
+
 
 export default function MenuLateral() {
+
+    const logout = <BiLogOut />
+
     return (
         <section className="navBarLateral-Container">
-
-            <img src="./logo.svg" alt="Logo da Roomie" />
+            <a href="*">
+                <img src="./logo.svg" alt="Logo da Roomie" />
+            </a>
 
             <ul className="navBarLateral-list">
-                <li>Usuarios</li>
-                <li>Imóveis</li>
+                <a href="*">
+                    <li>
+                        Usuarios
+                    </li>
+                </a>
+                <a href="*">
+                    <li>
+                        Imóveis
+                    </li>
+                </a>
             </ul>
 
-            <span>
-                Sair
-            </span>
+            <a href="/" className="logout">
+                {logout}
+                <span>
+
+                    Sair
+                </span>
+            </a>
         </section>
     );
 }
