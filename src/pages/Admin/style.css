@@ -1,3 +1,32 @@
-section {
-    background-color: #EFF9EE;
+main {
+  background-color: #eff9ee;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; 
+}
+
+.navBar {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.AdminTable-Container {
+
+  margin-top: 20vh;
+  margin-right: 50vh;
+
+}
+
+.tabela {
+  height: 600px;
+  width: 100%;
+  overflow: scroll;
+  border-radius: 30px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 13, 0.15);
+  background-color: #fff;
+}
+
+.tabela::-webkit-scrollbar {
+  display: none;
 }

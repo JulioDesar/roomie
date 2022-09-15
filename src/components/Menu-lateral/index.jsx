@@ -9,7 +9,7 @@ export default function MenuLateral() {
 
     return (
         <section className="navBarLateral-Container">
-            <a href="*">
+            <a href="/">
                 <img src="./logo.svg" alt="Logo da Roomie" />
             </a>
 
