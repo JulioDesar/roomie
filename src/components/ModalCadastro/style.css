@@ -1,0 +1,35 @@
+
+
+.form{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: white;
+    padding: 3ren;
+    border-radius:50px;
+
+}
+
+.input-form input{
+    margin: 0.6rem 0;
+    padding: 0.8rem 1.2rem;
+    border: none;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1.1rem;
+    box-shadow: 1px 1px 6px black;
+    margin-bottom: 100px;
+
+}
+
+.input-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 1rem 0;
+    
+}
+
