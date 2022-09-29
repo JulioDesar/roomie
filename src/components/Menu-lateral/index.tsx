@@ -1,7 +1,5 @@
-import React from "react";
 import "./style.css";
 import { BiLogOut } from "react-icons/bi";
-
 
 export default function MenuLateral() {
 

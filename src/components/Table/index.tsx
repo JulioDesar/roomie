@@ -1,4 +1,3 @@
-import React from "react";
 import "./style.css";
 import { BiUserX, BiUserCheck, BiEditAlt } from "react-icons/bi";
 
