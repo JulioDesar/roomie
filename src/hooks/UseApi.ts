@@ -6,7 +6,10 @@ const api = axios.create({
 });
 
 export const useApi = () => ({
-
+	validateToken: async (token: string) => {
+		const response = await api.get(`/auth/valid?token=${token}`);
+		return response.data;
+	},
 	signin: async (email: string, senha: string) => {
 		const response = await api.post("/auth", { email, senha });
 		return response.data;
