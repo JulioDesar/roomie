@@ -33,20 +33,26 @@ export function LoginForm() {
 
             <form>
                 <span>Login</span>
-                <input
-                    type="email"
-                    value={email}
-                    onChange={handleEmailInput}
-                    size={70}
-                />
+                <label className="Modal-input-container">
+                    <input
+                        type="email"
+                        value={email}
+                        onChange={handleEmailInput}
+                        size={70}
+                        className="Modal-input"
+                    />
+                </label>
 
                 <span>Senha</span>
-                <input
-                    type="password"
-                    value={password}
-                    onChange={handlePasswordInput}
-                    size={70}
-                />
+                <label className="Modal-input-container">
+                    <input
+                        type="password"
+                        value={password}
+                        onChange={handlePasswordInput}
+                        size={70}
+                        className="Modal-input"
+                    />
+                </label>
 
                 <div><a href="*">Esqueci minha senha</a></div>
                 <Link to="/admin">

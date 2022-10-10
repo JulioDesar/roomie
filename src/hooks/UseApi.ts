@@ -13,5 +13,23 @@ export const useApi = () => ({
 	signin: async (email: string, senha: string) => {
 		const response = await api.post("/auth", { email, senha });
 		return response.data;
+	},
+	cadastrar: async (nome: string, cpf: string, telefone: string, nascimento: string, funcao: string, email: string, senha: string) => {
+		const response = await api.post("/users/", {
+			nome,
+			cpf,
+			telefone,
+			nascimento,
+			funcao,
+			email,
+			senha
+		}, {
+			headers: {
+				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
+			}
+		})
+
+		return response.data;
 	}
+
 });

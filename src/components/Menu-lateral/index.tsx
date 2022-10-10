@@ -2,6 +2,7 @@ import "./style.css";
 import { BiLogOut } from "react-icons/bi";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
+import { Link } from "react-router-dom";
 
 export default function MenuLateral() {
 
@@ -19,11 +20,11 @@ export default function MenuLateral() {
             </a>
 
             <ul className="navBarLateral-list">
-                <a href="*">
+                <Link to={"/admin"}>
                     <li>
                         Usuarios
                     </li>
-                </a>
+                </Link>
                 <a href="*">
                     <li>
                         Imóveis
