@@ -11,8 +11,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/admin" element={<RequireAuth><Admin /></RequireAuth>} />
-        <Route path="/cadastrar" element={<RequireAuth><CadastroForm /></RequireAuth>} />
+        <Route path="/admin" element={<Admin />} />
+        <Route path="/cadastrar" element={<CadastroForm />} />
       </Routes>
     </div>
   );
