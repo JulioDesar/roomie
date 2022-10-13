@@ -31,16 +31,24 @@ export const useApi = () => ({
 
 		return response.data;
 	},
-	pegar: async () => {
-		//const response = await api.get(`/users/user?nome=${nome}`, {
-		const response = await api.get("/users/user", {
+	pegar: async (nome:string) => {
+		const response = await api.get(`/users/user?nome=${nome}`, {
 			headers: {
-				"Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgUm9vbWllIiwic3ViIjoiMSIsImlhdCI6MTY2NTQ0MzA3MywiZXhwIjoxNjY1NDQ2NjczfQ.OpWQMbT5icXjSROybpEYhrPCb9Cpawyy2Brm4Cl71Kw`
-				//"Authorization": `Bearer ${localStorage.getItem("authToken")}`
+				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
 			}
 		})
-
-		return response.data;
-	}
-
+		return response.data.content;
+	},
+	atualizar: async (id:number, telefone:string, ativo:boolean, funcao:string) => {
+		const response = await api.put(`/users/${id}`, {
+			telefone,
+			ativo,
+			funcao
+		},{
+			headers: {
+				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
+			}
+		})
+		return response.status;
+	},
 });

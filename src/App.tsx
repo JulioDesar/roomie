@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.css';
+import AtualizarForm from './components/Modal-Atualizar';
 import CadastroForm from './components/Modal-Cadastro';
 import { RequireAuth } from './contexts/Auth/RequireAuth';
 import Admin from './pages/Admin';
@@ -11,8 +12,9 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Login />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/admin" element={<RequireAuth><Admin /></RequireAuth>} />
         <Route path="/cadastrar" element={<CadastroForm />} />
+        <Route path="/atualizar" element={<AtualizarForm />} />
       </Routes>
     </div>
   );

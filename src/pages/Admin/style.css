@@ -52,3 +52,27 @@ main {
 .button-modal > label {
   cursor: pointer;
 }
+
+.Modal-input {
+  outline: none;
+  padding-left: 10px;
+
+  color: #286955;
+
+  border:none;
+  background-image:none;
+  background-color:transparent;
+  box-shadow: none;  
+}
+
+.Modal-input-container {
+  display: flex;
+  background: #F7FAFC;
+  border-radius: 50px;
+
+  padding: 10px 5px 10px 30px;
+
+  margin: 10px;
+
+  box-shadow: 0px 5px 15px rgba(0, 0, 13, 0.15);
+}

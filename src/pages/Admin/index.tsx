@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.css";
 import MenuLateral from "../../components/Menu-lateral";
 import Navbar from "../../components/NavBar";
-import Table from "../../components/Table";
 import { BiUser } from "react-icons/bi";
 
 import "./style.css";
 import Input from "../../components/Input-form";
 import { useNavigate } from "react-router-dom";
+import Table from "../../components/Table/Table";
 
 export default function Admin() {
 
 	const navigate = useNavigate();
+	const [buscar, setBuscar] = useState("");
 
 	return (
 		<main>
@@ -22,11 +23,16 @@ export default function Admin() {
 			<article className="navBar">
 				<Navbar />
 				<section className="inputAdmin">
-					<Input
-						type="text"
-						msg="Informe o CPF"
-						size={40}
-					/>
+					<label className="Modal-input-container">
+						<input
+							type="text"
+							placeholder="Informe o CPF"
+							value={buscar}
+							onChange={((e) => setBuscar(e.target.value))}
+							size={40}
+							className="Modal-input"
+						/>
+					</label>
 					<form className="button-modal" onClick={() => {
 						navigate("/cadastrar")
 					}
@@ -37,7 +43,7 @@ export default function Admin() {
 				</section>
 				<section className="AdminTable-Container">
 					<div className="tabela">
-						<Table />
+						<Table nome={buscar} />
 					</div>
 				</section>
 			</article>

@@ -1,19 +1,18 @@
 import "./style.css";
 import { BiUserX, BiUserCheck, BiEditAlt } from "react-icons/bi";
-import React, { useEffect } from "react";
+import React, { ReactNode, useEffect } from "react";
 import axios from "axios";
 
 export default function Table() {
     interface IUsers {
-        id: number;
-        nome: string;
-        cpf: string;
-        funcao: string;
-        nascimento: Date;
-        telefone: string;
-        ativo: boolean;
-        email: string;
-        password?: string;
+        content: [
+            [
+                id: number,
+                nome: string,
+                funcao: string,
+                ativo: boolean
+            ]
+        ]
     }
     const defaultUsers: IUsers[] = [];
     const [users, setUsers]: [IUsers[], (users: IUsers[]) => void] = React.useState(defaultUsers);
@@ -22,10 +21,10 @@ export default function Table() {
     async function getUsers() {
         await axios.get<IUsers[]>("http://localhost:5000/users/user", {
             headers: {
-                "Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgUm9vbWllIiwic3ViIjoiMSIsImlhdCI6MTY2NTQ0Njc1NywiZXhwIjoxNjY1NDUwMzU3fQ.9Qx5Z1ukzBB-B0c_vMjyvSwOZNOGs4NNFGxxPkSNXVE`
+                "Authorization": `Bearer eyJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJBUEkgUm9vbWllIiwic3ViIjoiMSIsImlhdCI6MTY2NTYwODMxOSwiZXhwIjoxNjY1NjExOTE5fQ.HxQpJu6v2YkLiQh0Jswl5XaMUxxxZZaAREkViHV-yXM`
                 //"Authorization": `Bearer ${localStorage.getItem("authToken")}`
             },
-            //timeout : 1
+            timeout : 1
         }).then((response) => {
             setUsers(response.data);
         })
@@ -44,13 +43,13 @@ export default function Table() {
                 </tr>
             </thead>
             <tbody>
-                {Array.isArray(users) ? users.map((user) => (
+                {users.map((user) => (
 
-                    <tr key={user.id} >
-                        <td>{user.nome}</td>
+                    <tr key={user.content[0][0]} >
+                        <td>{user.content[0][1]}</td>
 
-                        <td>{user.funcao}</td>
-                        <td>{user.ativo}</td>
+                        <td>{user.content[0][2]}</td>
+                        <td>{user.content[0][3]}</td>
                         <td>
                             <div className="table-opcoes">
                                 <BiEditAlt
@@ -71,7 +70,7 @@ export default function Table() {
                             </div>
                         </td>
                     </tr>
-                )) : null}
+                ))}
             </tbody>
         </table >
     )
