@@ -39,8 +39,8 @@ export default function AtualizarForm() {
                     <input
                         type="text"
                         placeholder="telefone"
-                        minLength={9}
-                        maxLength={9}
+                        minLength={11}
+                        maxLength={11}
                         value={telefone}
                         onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ''))}
                         className="Modal-input"
