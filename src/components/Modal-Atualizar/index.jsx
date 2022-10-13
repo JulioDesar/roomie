@@ -1,16 +1,7 @@
-import { Checkbox } from "@mui/material";
-import React, { useEffect, useState } from "react";
-import {
-    BiUser,
-    BiEnvelope,
-    BiEditAlt,
-    BiPhone,
-    BiMap,
-    BiCalendarAlt,
-    BiCheck,
-} from "react-icons/bi";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useApi } from "../../hooks/UseApi";
+import "./style.css";
 
 export default function AtualizarForm() {
 
@@ -41,32 +32,39 @@ export default function AtualizarForm() {
     }, []);
 
     return (
-        <main>
-            <form className="Modal-cadastro-form">
+        <main className="atualizar">
+            <form className="Modal-update-form">
 
-                <input
-                    type="text"
-                    placeholder="telefone"
-                    value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
-                />
-                
-                <input
-                    type="radio"
-                    value={"ADMINISTRADOR"}
-                    checked={funcao === "ADMINISTRADOR"}
-                    onChange={(e) => setFuncao(e.target.value)}
-                /> ADMINISTRADOR
+                <label className="Modal-input-container">
+                    <input
+                        type="text"
+                        placeholder="telefone"
+                        minLength={9}
+                        maxLength={9}
+                        value={telefone}
+                        onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ''))}
+                        className="Modal-input"
+                    />
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        value={"ADMINISTRADOR"}
+                        checked={funcao === "ADMINISTRADOR"}
+                        onChange={(e) => setFuncao(e.target.value)}
+                    /> ADMINISTRADOR
+                    <input
+                        type="radio"
+                        value={"APROVADOR"}
+                        checked={funcao === "APROVADOR"}
+                        onChange={(e) => setFuncao(e.target.value)}
+                    /> APROVADOR
+                </label>
 
-                <input
-                    type="radio"
-                    value={"APROVADOR"}
-                    checked={funcao === "APROVADOR"}
-                    onChange={(e) => setFuncao(e.target.value)}
-                /> APROVADOR
 
-                <label onClick={putData}>Confirmar</label>
-                <button onClick={cancelar}>Cancelar</button>
+                <button onClick={putData} className="update-button">Confirmar</button>
+                <button onClick={cancelar} className="cancel-button">Cancelar</button>
+
             </form>
         </main>
     )

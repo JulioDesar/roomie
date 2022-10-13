@@ -73,13 +73,13 @@ export default function Table(props) {
                                     size={25}
                                     style={user.ativo ? { cursor: "default" } : { cursor: "pointer" }}
                                     color={user.ativo ? "#707070" : "#68D391"}
-                                    onClick={() => putData(user)}
+                                    onClick={() => user.ativo ? null : putData(user)}
                                 />
                                 <BiUserX
                                     size={25}
                                     style={user.ativo ? { cursor: "pointer" } : { cursor: "default" }}
                                     color={user.ativo ? "#FC8181" : "#707070"}
-                                    onClick={() => putData(user)}
+                                    onClick={() => user.ativo ? putData(user) : null}
                                 />
                             </div>
                         </td>

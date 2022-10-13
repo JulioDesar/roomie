@@ -15,7 +15,7 @@ export default function Admin() {
 	const [buscar, setBuscar] = useState("");
 
 	return (
-		<main>
+		<main className="principal">
 			<section className="menu">
 				<MenuLateral />
 			</section>

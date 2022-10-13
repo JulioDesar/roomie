@@ -1,16 +1,7 @@
-import axios from "axios";
-import React, { useState } from "react";
-import {
-    BiUser,
-    BiEnvelope,
-    BiEditAlt,
-    BiPhone,
-    BiMap,
-    BiCalendarAlt,
-    BiCheck,
-} from "react-icons/bi";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useApi } from "../../hooks/UseApi";
+import "./style.css";
 
 export default function CadastroForm() {
 
@@ -37,66 +28,84 @@ export default function CadastroForm() {
     }
 
     return (
-        <main>
+        <main className="cadastrar">
             <form className="Modal-cadastro-form">
-
-                <input
-                    type="text"
-                    placeholder="nome"
-                    value={nome}
-                    onChange={(e) => setNome(e.target.value)}
-                />
-
-                <input
-                    type="text"
-                    placeholder="cpf"
-                    value={cpf}
-                    onChange={(e) => setCpf(e.target.value)}
-                />
-
-                <input
-                    type="date"
-                    value={nascimento}
-                    onChange={(e) => setNascimento(e.target.value)}
-                />
-
-                <input
-                    type="text"
-                    placeholder="telefone"
-                    value={telefone}
-                    onChange={(e) => setTelefone(e.target.value)}
-                />
-
-                <input
-                    type="radio"
-                    value={"ADMINISTRADOR"}
-                    checked={funcao === "ADMINISTRADOR"}
-                    onChange={(e) => setFuncao(e.target.value)}
-                /> ADMINISTRADOR
-
-                <input
-                    type="radio"
-                    value={"APROVADOR"}
-                    checked={funcao === "APROVADOR"}
-                    onChange={(e) => setFuncao(e.target.value)}
-                /> APROVADOR
-
-                <input
-                    type="email"
-                    placeholder="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                />
-
-                <input
-                    type="password"
-                    placeholder="senha"
-                    value={senha}
-                    onChange={(e) => setSenha(e.target.value)}
-                />
-
-                <label onClick={postData}>Confirmar</label>
-                <button onClick={cancelar}>Cancelar</button>
+                <label className="Modal-input-container">
+                    <input
+                        type="text"
+                        placeholder="nome"
+                        value={nome}
+                        onChange={(e) => setNome(e.target.value)}
+                        className="Modal-input"
+                    />
+                </label>
+                <label className="Modal-input-container">
+                    <input
+                        type="text"
+                        placeholder="cpf"
+                        minLength={11}
+                        maxLength={11} 
+                        value={cpf}
+                        onChange={(e) => setCpf(e.target.value.replace(/\D/g, ''))}
+                        className="Modal-input"
+                    />
+                </label>
+                <label className="Modal-input-container">
+                    <input
+                        type="date"
+                        value={nascimento}
+                        onChange={(e) => setNascimento(e.target.value)}
+                        className="Modal-input"
+                    />
+                </label>
+                <label className="Modal-input-container">
+                    <input
+                        type="text"
+                        placeholder="telefone"
+                        minLength={9}
+                        maxLength={9} 
+                        value={telefone}
+                        onChange={(e) => setTelefone(e.target.value.replace(/\D/g, ''))}
+                        className="Modal-input"
+                    />
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        value={"ADMINISTRADOR"}
+                        checked={funcao === "ADMINISTRADOR"}
+                        onChange={(e) => setFuncao(e.target.value)}
+                    /> ADMINISTRADOR
+                </label>
+                <label>
+                    <input
+                        type="radio"
+                        value={"APROVADOR"}
+                        checked={funcao === "APROVADOR"}
+                        onChange={(e) => setFuncao(e.target.value)}
+                    /> APROVADOR
+                </label>
+                <label className="Modal-input-container">
+                    <input
+                        type="email"
+                        placeholder="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="Modal-input"
+                    />
+                </label>
+                <label className="Modal-input-container">
+                    <input
+                        type="password"
+                        placeholder="senha"
+                        minLength={6}
+                        value={senha}
+                        onChange={(e) => setSenha(e.target.value)}
+                        className="Modal-input"
+                    />
+                </label>
+                <button onClick={postData} className="create-button">Confirmar</button>
+                <button onClick={cancelar} className="cancel-button">Cancelar</button>
             </form>
         </main>
     )
