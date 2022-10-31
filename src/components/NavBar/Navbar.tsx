@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
-import "./style.css";
+import "./Navbar.scss";
 
 export default function Navbar() {
     const auth = useContext(AuthContext);

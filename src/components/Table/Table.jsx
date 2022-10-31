@@ -1,4 +1,5 @@
-import "./style.css";
+/* eslint-disable react-hooks/exhaustive-deps */
+import "./Table.scss";
 import { BiUserX, BiUserCheck, BiEditAlt } from "react-icons/bi";
 import { useEffect, useState, useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
@@ -12,14 +13,6 @@ export default function Table(props) {
     const api = useApi();
     const auth = useContext(AuthContext);
     const navigate = useNavigate();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    async function getUsers() {
-        await api.pegar(props.nome ? props.nome : "")
-            .then((response) => {
-                setUsers(response);
-            });
-    }
 
     const setData = (data) => {
         console.log(data);
@@ -39,6 +32,12 @@ export default function Table(props) {
         }
     }
 
+    async function getUsers() {
+        await api.pegar(props.nome)
+            .then((response) => {
+                setUsers(response);
+            });
+    }
 
     useEffect(() => {
         getUsers();

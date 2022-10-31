@@ -1,11 +1,9 @@
 import React, { useState } from "react";
-import "./style.css";
-import MenuLateral from "../../components/Menu-lateral";
-import Navbar from "../../components/NavBar";
+import MenuLateral from "../../components/Menu-lateral/MenuLateral";
+import Navbar from "../../components/NavBar/Navbar";
 import { BiUser } from "react-icons/bi";
 
-import "./style.css";
-import Input from "../../components/Input-form";
+import "./Admin.scss";
 import { useNavigate } from "react-router-dom";
 import Table from "../../components/Table/Table";
 

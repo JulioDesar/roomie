@@ -1,7 +1,7 @@
 import { ChangeEvent, useContext, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from '../../contexts/Auth/AuthContext';
-import "./style.css";
+import "./LoginForm.scss";
 
 export function LoginForm() {
     const [email, setEmail] = useState('');

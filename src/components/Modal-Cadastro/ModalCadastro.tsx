@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useApi } from "../../hooks/UseApi";
-import "./style.css";
+import "./ModalCadastro.scss";
 
 export default function CadastroForm() {
 

@@ -1,4 +1,4 @@
-import "./style.css";
+import "./MenuLateral.scss";
 import { BiLogOut } from "react-icons/bi";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/Auth/AuthContext";
@@ -25,11 +25,11 @@ export default function MenuLateral() {
                         Usuarios
                     </li>
                 </Link>
-                <a href="*">
+                <Link to={"/imovel"}>
                     <li>
                         Imóveis
                     </li>
-                </a>
+                </Link>
             </ul>
 
             <a href="/" className="logout" onClick={handleLogout}>

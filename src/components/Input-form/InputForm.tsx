@@ -1,4 +1,4 @@
-import "./style.css"
+import "./InputForm.scss"
 
 export default function Input(props: { type: string | (string & {}) | undefined; msg: string | undefined; size: number | undefined; }) {
     return (

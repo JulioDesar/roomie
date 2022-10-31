@@ -31,20 +31,21 @@ export const useApi = () => ({
 
 		return response.data;
 	},
-	pegar: async (nome:string) => {
+	pegar: async (nome: string) => {
 		const response = await api.get(`/users/user?nome=${nome}`, {
 			headers: {
 				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
-			}
+			},
+			timeout: 1
 		})
 		return response.data.content;
 	},
-	atualizar: async (id:number, telefone:string, ativo:boolean, funcao:string) => {
+	atualizar: async (id: number, telefone: string, ativo: boolean, funcao: string) => {
 		const response = await api.put(`/users/${id}`, {
 			telefone,
 			ativo,
 			funcao
-		},{
+		}, {
 			headers: {
 				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
 			}
