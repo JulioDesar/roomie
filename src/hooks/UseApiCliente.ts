@@ -10,7 +10,7 @@ export const useApiCliente = () => ({
 	pegarImoveis: async () => {
 		const response = await api.get("/imoveis/imovel", {
 			headers: {
-				"Authorization": `Bearer ${localStorage.getItem("tokenCliente")}`
+				"Authorization": `Bearer ${sessionStorage.getItem("tokenCliente")}`
 			}
 		});
 		return response.data.content;

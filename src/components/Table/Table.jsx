@@ -32,16 +32,16 @@ export default function Table(props) {
         }
     }
 
-    async function getUsers() {
-        await api.pegar(props.nome)
+    async function getUsers(nome) {
+        await api.pegar(nome)
             .then((response) => {
                 setUsers(response);
             });
     }
 
     useEffect(() => {
-        getUsers();
-    }, [getUsers]);
+        getUsers(props.nome);
+    }, [props.nome]);
     return (
         <table className="table-container" cellPadding={0} cellSpacing={0}>
             <thead>
@@ -52,7 +52,7 @@ export default function Table(props) {
                     <th>Opções</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody onChange={getUsers}>
                 {users.map((user) => (
 
                     <tr key={user.id} >

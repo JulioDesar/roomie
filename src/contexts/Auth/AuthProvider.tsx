@@ -8,35 +8,37 @@ export const AuthProvider = ({ children }: { children: JSX.Element }) => {
     const api = useApi();
 
     useEffect(() => {
-        const validateToken = async () => {
-            const storageData = localStorage.getItem('authToken');
-            if (storageData) {
-                const data = await api.validateToken(storageData);
-                if (data) {
-                    setUser(data);
-                }
-            }
+        const loggedInUser = sessionStorage.getItem("userAdmin");
+        if (loggedInUser) {
+            const foundUser = JSON.parse(loggedInUser);
+            setUser(foundUser);
         }
-        validateToken();
-    }, [api]);
+    }, []);
 
     const signin = async (email: string, password: string) => {
-        const data = await api.signin(email, password);
-        if (data.user && data.token) {
-            setUser(data.user);
-            setToken(data.token);
-            return true;
-        }
-        return false;
+        await api.signin(email, password)
+            .then(data => {
+                if (data.user && data.token) {
+                    setUser(data.user);
+                    sessionStorage.setItem("userAdmin", JSON.stringify(data.user));
+                    setToken(data.token);
+                }
+            });
+        return user ? true : false;
     }
 
     const signout = () => {
         setUser(null);
-        setToken("");
+        setToken(null);
+        sessionStorage.clear();
     }
 
-    const setToken = (token: string) => {
-        localStorage.setItem('authToken', token);
+    const setToken = (token: any) => {
+        if (token != null) {
+            sessionStorage.setItem("tokenAdmin", token);
+        } else {
+            sessionStorage.removeItem("tokenAdmin");
+        }
     }
 
     return (

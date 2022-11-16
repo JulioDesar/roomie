@@ -15,7 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Login />} />
         <Route path="/admin" element={<RequireAuth><Admin /></RequireAuth>} />
-        <Route path="/imovel" element={<Imovel />} />
+        <Route path="/imovel" element={<RequireAuth><Imovel /></RequireAuth>} />
         <Route path="/cadastrar" element={<RequireAuth><CadastroForm /></RequireAuth>} />
         <Route path="/atualizar" element={<RequireAuth><AtualizarForm /></RequireAuth>} />
       </Routes>

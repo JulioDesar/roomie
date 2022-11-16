@@ -6,10 +6,6 @@ const api = axios.create({
 });
 
 export const useApi = () => ({
-	validateToken: async (token: string) => {
-		const response = await api.get(`/auth/valid?token=${token}`);
-		return response.data;
-	},
 	signin: async (email: string, senha: string) => {
 		const response = await api.post("/auth", { email, senha });
 		return response.data;
@@ -25,7 +21,7 @@ export const useApi = () => ({
 			senha
 		}, {
 			headers: {
-				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
+				"Authorization": `Bearer ${sessionStorage.getItem("tokenAdmin")}`
 			}
 		})
 
@@ -34,9 +30,8 @@ export const useApi = () => ({
 	pegar: async (nome: string) => {
 		const response = await api.get(`/users/user?nome=${nome}`, {
 			headers: {
-				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
-			},
-			timeout: 1
+				"Authorization": `Bearer ${sessionStorage.getItem("tokenAdmin")}`
+			}
 		})
 		return response.data.content;
 	},
@@ -47,7 +42,7 @@ export const useApi = () => ({
 			funcao
 		}, {
 			headers: {
-				"Authorization": `Bearer ${localStorage.getItem("authToken")}`
+				"Authorization": `Bearer ${sessionStorage.getItem("tokenAdmin")}`
 			}
 		})
 		return response.status;

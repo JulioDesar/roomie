@@ -17,11 +17,10 @@ export default function Imovel() {
                 setImoveis(response);
             }
             );
-    }
-
+    }    
     useEffect(() => {
         todosImoveis();
-    }, [todosImoveis]);
+    }, []);
 
     return (
         <main className="principal">
@@ -29,19 +28,18 @@ export default function Imovel() {
                 <MenuLateral />
             </section>
 
-            <section className="cards">
+            <section className="cards" onChange={todosImoveis}>
                 {imoveis.map((imovel) => (
                     <Card style={{ width: "14rem" }} key={imovel.id}>
                         <Carousel variant="dark">
-                            {imovel.imagens.map((imagem) => (
+                            {imovel.imagens.map((item) => (
                                 <Carousel.Item>
                                     <img
                                         className="d-block w-100"
-                                        src={imagem}
-                                        alt="First slide"
+                                        src={"data:image/png;base64," + item.imagem}
+                                        alt="imovel"
                                     /></Carousel.Item>
                             ))}
-
                         </Carousel>
                         <Card.Body>
                             <Card.Title>{imovel.titulo}</Card.Title>
@@ -52,9 +50,7 @@ export default function Imovel() {
                         </Card.Body>
                     </Card>
                 ))}
-
             </section>
-
         </main>
     )
 
