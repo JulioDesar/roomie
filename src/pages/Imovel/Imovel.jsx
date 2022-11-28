@@ -4,20 +4,29 @@ import Card from "react-bootstrap/Card";
 import "./Imovel.scss";
 import { useApiCliente } from "../../hooks/UseApiCliente";
 import { useEffect, useState } from "react";
+import Modal from "react-bootstrap/Modal";
 import Carousel from "react-bootstrap/Carousel";
 export default function Imovel() {
 
     const apiCliente = useApiCliente();
     const [imoveis, setImoveis] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const [i, setImovel] = useState();
+    const handleClose = () => setShow(false);
+    const handleShow = (imovel) => {
+        setShow(true);
+        setImovel(imovel);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
     const todosImoveis = async () => {
         await apiCliente.pegarImoveis()
             .then(response => {
                 setImoveis(response);
-            }
-            );
-    }    
+            });
+    }
+
     useEffect(() => {
         todosImoveis();
     }, []);
@@ -46,10 +55,68 @@ export default function Imovel() {
                             <Card.Text>
                                 {imovel.descricao}
                             </Card.Text>
-                            <Button variant="primary">Detalhes</Button>
+                            <Button variant="primary" onClick={() => handleShow(imovel)}>Detalhes</Button>
                         </Card.Body>
                     </Card>
                 ))}
+
+                <Modal show={show} onHide={handleClose}>
+                    <Modal.Header closeButton>
+                        <Modal.Title>{i.titulo}</Modal.Title>
+                    </Modal.Header>
+                    <Carousel variant="dark">
+                        {i.imagens.map((item) => (
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src={"data:image/png;base64," + item.imagem}
+                                    alt="imovel"
+                                /></Carousel.Item>
+                        ))}
+                    </Carousel>
+                    <Modal.Body>
+                        descricao
+                        <div>
+                            {i.descricao}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Body>
+                        Endereco
+                        <div>
+                            Cep: {i.cep}
+                        </div>
+                        <div>
+                            Numero: {i.numero_casa}
+                        </div>
+                        <div>
+                            Cidade: {i.cidade}
+                        </div>
+                        <div>
+                            Estado: {i.estado}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Body>
+                        <div>
+                            Aceita algum genero especifico: {i.sexo}
+                        </div>
+                        <div>
+                            Quantidade de Quartos: {i.numeroQuartos}
+                        </div>
+                    </Modal.Body>
+                    <Modal.Body>
+                        <div>
+                            Preco: a definir
+                        </div>
+                    </Modal.Body>
+                    <Modal.Footer>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Fechar
+                        </Button>
+                        <Button variant="primary" onClick={handleClose}>
+                            Aceitar Imovel
+                        </Button>
+                    </Modal.Footer>
+                </Modal>
             </section>
         </main>
     )
