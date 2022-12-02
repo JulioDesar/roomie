@@ -14,5 +14,15 @@ export const useApiCliente = () => ({
 			}
 		});
 		return response.data.content;
+	},
+	aceitarImovel: async (status: string, id: number) => {
+		const response = await api.put(`/imovel/${id}`, {
+			status
+		}, {
+			headers: {
+				"Authorization": `Bearer ${sessionStorage.getItem("tokenCliente")}`,
+			}
+		});
+		return response.data;
 	}
 });
