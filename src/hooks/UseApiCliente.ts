@@ -1,4 +1,5 @@
 import axios from "axios";
+import { Alert } from "react-bootstrap";
 
 const api = axios.create({
 	baseURL: "http://localhost:5050",
@@ -15,14 +16,14 @@ export const useApiCliente = () => ({
 		});
 		return response.data.content;
 	},
-	aceitarImovel: async (status: string, id: number) => {
-		const response = await api.put(`/imovel/${id}`, {
+	aceitarImovel: async (status: any, id: number) => {
+		await api.put(`/imoveis/imovel/${id}`, {
 			status
-		}, {
-			headers: {
-				"Authorization": `Bearer ${sessionStorage.getItem("tokenCliente")}`,
-			}
+		}).then(response => {
+			alert(`O imovel foi ${status} com sucesso`);
+		}).catch(error => {
+			alert("Erro ao validar o imovel");
 		});
-		return response.data;
+		
 	}
 });

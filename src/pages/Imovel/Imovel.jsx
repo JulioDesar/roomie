@@ -32,8 +32,8 @@ export default function Imovel() {
     }
 
     const mudarStatusImovel = async (status, id) => {
-        console.log(status);
         await apiCliente.aceitarImovel(status, id);
+        window.location.reload(false);
     }
 
     useEffect(() => {
@@ -124,7 +124,7 @@ export default function Imovel() {
                     <Button variant="danger" onClick={() => handleClose("REPROVADO", i?.id)}>
                         Recusar Imovel
                     </Button>
-                    <Button variant="primary" onClick={() => handleClose("APROVADO", i?.id,)}>
+                    <Button variant="primary" onClick={() => handleClose("APROVADO", i?.id)}>
                         Aceitar Imovel
                     </Button>
                 </Modal.Footer>
